@@ -4,6 +4,8 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { SpotifyAuth } from '@/components/spotifyLogin';
+
 
 export default function HomeScreen() {
   return (
@@ -15,8 +17,9 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
+      <SpotifyAuth />
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">WOOOOO!</ThemedText>
+        <ThemedText type="title">WOOOO</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
