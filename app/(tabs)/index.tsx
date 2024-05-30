@@ -5,9 +5,22 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { SpotifyAuth } from '@/components/spotifyLogin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function HomeScreen() {
+  const titleMSG = "WOOOOOOO!";
+  async function getAccessToken() {
+    try {
+      const token = await AsyncStorage.getItem('accessToken');
+      return token;
+    } catch (e) {
+      console.log("Error getting token: ", e);
+    }
+  };
+
+  const token = getAccessToken();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -19,7 +32,7 @@ export default function HomeScreen() {
       }>
       <SpotifyAuth />
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">WOOOO</ThemedText>
+        <ThemedText type="title">{titleMSG}</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
