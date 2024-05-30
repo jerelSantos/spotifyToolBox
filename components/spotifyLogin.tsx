@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react';
 import { Button } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// CLIENT_ID from Spotify Developer dashboard
-const CLIENT_ID = 'ff4829cf858b451b9e86367a336d34b6';
-const CLIENT_SECRET = '6aa6142c20b6453d89658526dcd0a78e';
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '@env';
 
 // define scopes to allow communication with certain endpoints in the API
 const SCOPES = ['streaming', 'playlist-read-private', 'playlist-read-collaborative', 'user-modify-playback-state'];
@@ -33,7 +30,7 @@ export function SpotifyAuth() {
 
   const [request, response, promptAsync] = AuthSession.useAuthRequest(
       {
-        clientId: CLIENT_ID,
+        clientId: SPOTIFY_CLIENT_ID,
         scopes: SCOPES,
         usePKCE: false,
         redirectUri: redirectURI
@@ -56,8 +53,8 @@ export function SpotifyAuth() {
         grant_type: 'authorization_code',
         code: code,
         redirect_uri: redirectURI,
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET
+        client_id: SPOTIFY_CLIENT_ID,
+        client_secret: SPOTIFY_CLIENT_SECRET
       }), {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'

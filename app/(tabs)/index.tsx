@@ -20,6 +20,7 @@ export default function HomeScreen() {
   };
 
   const token = getAccessToken();
+  console.log(token);
 
   return (
     <ParallaxScrollView
