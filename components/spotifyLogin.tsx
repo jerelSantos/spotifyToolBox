@@ -36,7 +36,7 @@ export function SpotifyAuth() {
         redirectUri: redirectURI
       },
       discovery
-    );
+  );
 
   useEffect(() => {
     if (response?.type === 'success') {
